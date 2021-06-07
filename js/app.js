@@ -76,14 +76,17 @@ function renderThreeImages() {
 
   while (leftImageIndex===rightImageIndex||leftImageIndex===middleImageIndex||middleImageIndex===rightImageIndex) {
     rightImageIndex=generateRandomIndex();
+    middleImageIndex=generateRandomIndex();
 
   }
   console.log(Product.allProducts[leftImageIndex].source);
 
   leftImageElement.src=Product.allProducts[leftImageIndex].source;
+  Product.allProducts[leftImageIndex].timeImageShown++;
   middleImageElement.src=Product.allProducts[middleImageIndex].source;
+  Product.allProducts[middleImageIndex].timeImageShown++;
   rightImageElement.src=Product.allProducts[rightImageIndex].source;
-
+  Product.allProducts[rightImageIndex].timeImageShown++;
 
 }
 renderThreeImages();
@@ -107,7 +110,7 @@ function handleUserClick(event) {
     }else if(event.target.id==='right-image'){
       Product.allProducts[rightImageIndex].votes++;
     }
-    else{
+    else {
       Product.allProducts[middleImageIndex].votes++;
     }
 
