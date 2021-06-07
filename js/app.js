@@ -19,6 +19,12 @@ let leftImageIndex;
 let middleImageIndex;
 let rightImageIndex;
 
+//-----------1
+let productNames=[];
+let votes=[];
+let timeImageShown=[];
+//-------
+
 console.log(maxAttempts);
 console.log(userAttemptsCounter);
 console.log(leftImageIndex);
@@ -31,6 +37,7 @@ function Product(name,source){
   this.source=source;
   this.timeImageShown=0;
   this.votes=0;
+  productNames.push(this.name);
   Product.allProducts.push(this);
 }
 
@@ -74,11 +81,21 @@ function renderThreeImages() {
   rightImageIndex=generateRandomIndex();
 
 
-  while (leftImageIndex===rightImageIndex||leftImageIndex===middleImageIndex||middleImageIndex===rightImageIndex) {
+  while (leftImageIndex===rightImageIndex||leftImageIndex===middleImageIndex||middleImageIndex===rightImageIndex||leftImageIndex.includes(test)||rightImageIndex.includes(test)|| middleImageIndex.includes(test)){
+    /*rightImageIndex=generateRandomIndex();
+    middleImageIndex=generateRandomIndex();*/
+
     rightImageIndex=generateRandomIndex();
     middleImageIndex=generateRandomIndex();
+    leftImageIndex=generateRandomIndex();
 
   }
+  let test=[];
+  rightImageIndex.push(test);
+  middleImageElement.push(test);
+  leftImageElement.push(test);
+
+
   console.log(Product.allProducts[leftImageIndex].source);
 
   leftImageElement.src=Product.allProducts[leftImageIndex].source;
@@ -123,7 +140,17 @@ function handleUserClick(event) {
     let button=document.getElementById('results-list');
     console.log(button);
     button.addEventListener('click',showRusult);
-    divImageElement.removeEventListener('click',handleUserClick);}}
+    divImageElement.removeEventListener('click',handleUserClick);
+
+    //------3
+    for (let i = 0; i < Product.allProducts.length; i++) {
+
+      votes.push(Product.allProducts[i].votes);
+      timeImageShown.push(Product.allProducts[i].timeImageShown);
+    }
+    chart();
+
+  }}
 
 
 
@@ -138,3 +165,65 @@ function showRusult(){
     productResult.textContent=`${Product.allProducts[i].name} has ${Product.allProducts[i].votes} votes, and was seen ${Product.allProducts[i].timeImageShown} times. `;
 
   }}
+//-----------4
+function chart() {
+  let ctx = document.getElementById('myChart');
+  let myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels:productNames,
+      datasets: [{
+        label: '# of Votes',
+        data:votes,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      },
+      {
+        label: '# of timeImageShown',
+        data:timeImageShown,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+      }
+      ]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+}
+

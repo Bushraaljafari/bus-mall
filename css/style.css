@@ -1,0 +1,48 @@
+*{
+    font-family: 'Staatliches', cursive;
+}
+
+header{
+  
+background-color: black;
+    height: 100px;
+   text-align: center;
+   font-size: 150%;
+   font-weight: bolder;
+   color:burlywood;
+}
+
+#title{
+    padding-top: 40px;
+}
+main{
+    padding-left: 70px;
+    padding-right: 70px;
+   
+}
+#title2{
+    text-align: center;
+    background-color: burlywood;
+    height: 40px;
+    padding-top: 25px;
+}
+footer{
+    background-color: black;
+    color: cornsilk;
+    text-align: center;
+    height: 100px;
+    padding-top: 40px;
+}
+#images-div{
+    padding-top: 50px;
+    padding-left: 65px;
+   
+}
+
+#results-list{
+   background-color: burlywood;
+   margin-top: 30px;
+   font-family: 'Roboto Mono', monospace;
+   color: rgb(15, 15, 15);
+   font-weight: 800;
+}
