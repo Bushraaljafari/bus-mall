@@ -43,6 +43,29 @@ function Product(name,source){
 
 Product.allProducts=[];
 
+//--------3/1
+function upDateProduct(){
+  let arrayString=JSON.stringify(Product.allProducts);
+  console.log(arrayString);
+  localStorage.setItem('product',arrayString);
+}
+
+
+
+function getProductShoosen(){
+  let data=localStorage.getItem('product');
+  console.log(data);
+  let produtData=JSON.parse(data);
+  console.log(produtData);
+
+  if (produtData!==null){
+    Product.allProducts=produtData;
+  }
+  renderThreeImages();
+}
+
+
+
 
 new Product('bag','assets/bag.jpg');
 new Product('banana','assets/banana.jpg');
@@ -148,8 +171,12 @@ function handleUserClick(event) {
 
       votes.push(Product.allProducts[i].votes);
       timeImageShown.push(Product.allProducts[i].timeImageShown);
+
     }
+    upDateProduct();
+
     chart();
+
 
   }}
 
@@ -228,3 +255,4 @@ function chart() {
 
 }
 
+getProductShoosen();
