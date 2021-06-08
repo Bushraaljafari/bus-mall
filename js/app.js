@@ -73,7 +73,7 @@ function generateRandomIndex() {
 }
 console.log(generateRandomIndex());
 //--------1-2
-let test=[];
+let shownDiffResult=[];
 //------render part
 function renderThreeImages() {
 
@@ -82,7 +82,7 @@ function renderThreeImages() {
   rightImageIndex=generateRandomIndex();
 
 
-  while (leftImageIndex===rightImageIndex||leftImageIndex===middleImageIndex||middleImageIndex===rightImageIndex||test.includes(leftImageIndex)||test.includes(middleImageIndex)||test.includes(rightImageIndex)){
+  while (leftImageIndex===rightImageIndex||leftImageIndex===middleImageIndex||middleImageIndex===rightImageIndex|| shownDiffResult.includes(leftImageIndex)|| shownDiffResult.includes(middleImageIndex)|| shownDiffResult.includes(rightImageIndex)){
     /*rightImageIndex=generateRandomIndex();
     middleImageIndex=generateRandomIndex();*/
 
@@ -92,8 +92,10 @@ function renderThreeImages() {
 
 
   }
-  test=[leftImageIndex,middleImageIndex,rightImageIndex];
-
+  shownDiffResult=[leftImageIndex,middleImageIndex,rightImageIndex];
+  //or if i want to bush
+  /*shownDiffResult=[];
+  shownDiffResult.push(leftImageIndex,rightImageIndex,middleImageIndex);*/
 
 
   console.log(Product.allProducts[leftImageIndex].source);
