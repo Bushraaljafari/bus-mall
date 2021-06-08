@@ -72,7 +72,8 @@ function generateRandomIndex() {
   return Math.floor(Math.random() * Product.allProducts.length);
 }
 console.log(generateRandomIndex());
-
+//--------1-2
+let test=[];
 //------render part
 function renderThreeImages() {
 
@@ -81,7 +82,7 @@ function renderThreeImages() {
   rightImageIndex=generateRandomIndex();
 
 
-  while (leftImageIndex===rightImageIndex||leftImageIndex===middleImageIndex||middleImageIndex===rightImageIndex||leftImageIndex.includes(test)||rightImageIndex.includes(test)|| middleImageIndex.includes(test)){
+  while (leftImageIndex===rightImageIndex||leftImageIndex===middleImageIndex||middleImageIndex===rightImageIndex||test.includes(leftImageIndex)||test.includes(middleImageIndex)||test.includes(rightImageIndex)){
     /*rightImageIndex=generateRandomIndex();
     middleImageIndex=generateRandomIndex();*/
 
@@ -89,11 +90,10 @@ function renderThreeImages() {
     middleImageIndex=generateRandomIndex();
     leftImageIndex=generateRandomIndex();
 
+
   }
-  let test=[];
-  rightImageIndex.push(test);
-  middleImageElement.push(test);
-  leftImageElement.push(test);
+  test=[leftImageIndex,middleImageIndex,rightImageIndex];
+
 
 
   console.log(Product.allProducts[leftImageIndex].source);
