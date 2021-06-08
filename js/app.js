@@ -82,7 +82,7 @@ function renderThreeImages() {
   rightImageIndex=generateRandomIndex();
 
 
-  while (leftImageIndex===rightImageIndex||leftImageIndex===middleImageIndex||middleImageIndex===rightImageIndex||test.includes(leftImageIndex)||test.includes(middleImageIndex)||test.includes(rightImageIndex)){
+  while (leftImageIndex===rightImageIndex||leftImageIndex===middleImageIndex||middleImageIndex===rightImageIndex|test.includes(leftImageIndex)||test.includes(middleImageIndex)||test.includes(rightImageIndex)){
     /*rightImageIndex=generateRandomIndex();
     middleImageIndex=generateRandomIndex();*/
 
@@ -93,6 +93,7 @@ function renderThreeImages() {
 
   }
   test=[leftImageIndex,middleImageIndex,rightImageIndex];
+
 
 
 
